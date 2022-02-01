@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset=" UTF-8">
+    <title> Заголовок </title>
+</head>
+
+<body>
+    <h1> Hello </h1>
+    <script>
+        //2. Выбираем случайное слово
+        var pickWord = function () {
+            return words[Math.floor(Math.random() * words.length)];
+        };
+        var word = pickWord();
+        //3. Создаем итоговой масив:
+        var setupAnswerArray = function (array, word) {
+            for (var i = 0; i < word.length; i++) {
+                array[i] = "_";
+            }
+            return array;
+        };
+        var answerArray = setupAnswerArray(answerArray);
+
+        var remainingLetters = word.length;
+        //4. Програмируем игровой цикл:
+
+        while (remainingLetters > 0) {
+            // 1)Отображение состояния игры
+            // alert(answerArray.join(" "));
+            var showPlayerProgress = function (arrayToShow) {
+                alert(arrayToShow.join(" "));
+            }
+            showPlayerProgress(arrayToShow)
+            //2) Запрашиваем вариант ответа
+            var getGuess = function () {
+                prompt("Угадайте букву или нажмите Отмена для выхода из игры");
+            };
+            attempts--;
+            var guess = getGuess();
+
+
+
+            
+            // var guess = prompt("Угадайте букву или нажмите Отмена для выхода из игры");
+            // attempts--;
+            if (guess === null) {
+                break; //break - можно использовать для немедленного выхода из цыкла
+            } else if (guess.length !== 1) {
+                alert("Пожалуйста, введите только одну букву.");
+            }
+            //3) Обновляем состояние игры           
+            else {
+                guess = guess.toLowerCase();
+                for (var j = 0; j < randomWord.length; j++) {
+                    if (randomWord[j] === guess) {
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    }
+                }
+            }
+            if (attempts == 0) {
+                break;
+
+            }
+
+            //Конец игрового цыкла
+        }
+        //Отображаем ответ и поздравлям игрока
+        if (attempts > 0) {
+            alert(answerArray.join(" "));
+            alert("Поздравляем, вы выиграли! Было загадано слово - " + randomWord);
+        } else {
+            alert("Вы проиграли. Слово было загадано - " + randomWord);
+        }
+
+        var attempts = prompt("Сколько попыток вы хотите - 7, 9, 12, 17, 20, 25");
+        //1. Создаем масив со словами:
+        var words = ["стерлядь", "барракуда", "орангутан", "папай", "дверь", "кракатау", "удовольствие", "карабин",
+            "алое", "цветок", "фатон", "запитая", "тибальт", "севрюга", "гомилетика"
+        ];
+    </script>
+</body>
+
+</html>

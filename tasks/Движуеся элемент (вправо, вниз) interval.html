@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset=" UTF-8">
+    <title>test</title>
+</head>
+
+<body>
+    <h1 id="heading">Привет мир!!!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+        let leftOffset = 0;
+        const muveHeading = function () {
+            $("#heading").offset({
+                left: leftOffset // или top - вниз
+            });
+            leftOffset++;
+            if (leftOffset >= 200) {
+                leftOffset = 0;
+            }
+        };
+        setInterval(muveHeading, 30)
+    </script>
+
+</body>
+
+</html>

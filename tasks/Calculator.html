@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset=" UTF-8">
+    <title> Calculator </title>
+       <script>
+           
+        const setValueToElement = function (result) {
+         document.getElementById("result").value = result ;
+        }
+        const  getSelectedOperator = function () {
+            return document.getElementById(" operator").value;
+           
+        }
+        const   onClick = function () { 
+            setValueToElement(calculate(getSelectedOperator(), getFirstNumber(), getSecondNumber()));   
+        }
+
+        const  getButtonElement = function () {
+            return  document.getElementById("equals-button");    
+        }
+
+        const  getFirstNumber = function () {
+            return parseFloat(document.getElementById("firstNumber").value); 
+        }
+        const  getSecondNumber = function () {
+            return parseFloat(document.getElementById("secondNumber").value);
+        }
+        const subtract = function (a, b) {
+            return a - b;
+        };
+        const multiply = function (a, b) {
+            return a * b;
+        };
+        const divide = function (a, b) {
+            return a / b;
+        };
+        const add = function (a,  b) {
+            return a +  b;
+        };
+        const calculate = function (operator, a, b){
+            if (operator === '+') {
+                return add(a ,b);
+            }
+            else if (operator === '-') {
+                return subtract(a ,b);
+            }
+            else if (operator === '×') {
+                return multiply(a ,b);
+            }
+            else if (operator === '/') {
+                return divide(a ,b);
+            }
+        }
+        const   onLoad = function () {
+            const eqButton = getButtonElement();
+            eqButton.addEventListener("click",  onClick);   
+        }
+    </script> 
+</head>
+
+<body onload="onLoad()">
+
+    <input  value="" id="firstNumber" minlength="1" maxlength="9" size="10">
+    <select id=" operator">
+        <option value="/">/</option>
+        <option value="-">-</option>
+        <option value="×">×</option>
+        <option value="+">+</option>
+       </select>
+    <input  value="" id="secondNumber" minlength="1" maxlength="9" size="10">
+    <button id="equals-button" >=</button>
+    <input value="" id="result" type="text" minlength="1" disabled maxlength="9" size="10">
+
+</body>
+
+</html>

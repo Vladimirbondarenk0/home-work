@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset=" UTF-8">
+    <title>test</title>
+</head>
+
+<body>
+    <script>
+        function buildArray(begin, step, end) {
+            let nextNubmer = begin;
+            let result = [];
+            while (nextNubmer <= end) {
+                result.push(nextNubmer);
+                nextNubmer = nextNubmer + step;
+            }
+            return result;
+        }
+    </script>
+</body>
+
+</html>

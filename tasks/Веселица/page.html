@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset=" UTF-8">
+    <title> Виселица! </title>
+
+</head>
+
+<body>
+    <h1> Виселица! </h1>
+
+    <script>
+        var pickWord = function (words) {
+            return words[Math.floor(Math.random() * words.length)];
+        };
+        var setupAnswerArray = function (word) {
+            for (var i = 0; i < word.length; i++) {
+                answerArray[i] = "_";
+            }
+        };
+        var showPlayerProgress = function (answerArray) {
+            alert(answerArray.join(" "));
+        };
+        var getGuess = function () {
+            prompt("Угадайте букву или нажмите Отмена для выхода из игры");
+        };
+        var updateGameState = function (guess, word, answerArray) {
+            guess = guess.toLowerCase();
+            for (var j = 0; j < randomWord.length; j++) {
+                if (word[j] === guess) {
+                    answerArray[j] = guess;
+                    remainingLetters--; //???
+                }
+            }
+        };
+        var showAnswerAndCongratulatePlayer = function (answerArray) {
+            if (attempts > 0) {
+            alert(answerArray.join(" "));
+            alert("Отлично было загадано слово - " + randomWord);
+        } else {
+            alert("Вы проиграли. Слово было загадано - " + randomWord);
+        }
+        };
+
+
+        var attempts = prompt("Сколько попыток вы хотите - 4, 6, 9, 12, 17, 20");
+        var words = [
+            "собака",
+            "рыба",
+            "орангутан",
+            "папай",
+            "дверь",
+            "мандарин"
+        ];
+        var word = pickWord();
+        var answerArray = setupAnswerArray(word);
+        var remainingLetters = word.length;
+        while (remainingLetters > 0) {
+            showPlayerProgress(answerArray);
+            var guess = getGuess();
+            attempts--;
+            if (guess === null) {
+                break; //break - можно использовать для немедленного выхода из цыкла
+             } else if (guess.length !== 1) {
+                alert("Пожалуйста, введите только одну букву.");
+             } else {
+                var correctGuesess = updateGameState(guess, word, answerArray)
+                remainingLetters -= correctGuesess; //???
+            }
+        }
+        if (attempts == 0) {
+                break;
+
+            }
+        showAnswerAndCongratulatePlayer(answerArray);
+    </script>
+</body>
+
+</html>

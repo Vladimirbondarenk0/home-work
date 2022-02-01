@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset=" UTF-8">
+    <title> Заголовок </title>
+</head>
+
+<body>
+    <h1> Hello </h1>
+<script>
+    var attempts = prompt("Сколько попыток вы хотите - 4, 6, 9, 12, 17, 20");
+    //1. Создаем масив со словами:
+    var words = [
+        "собака",
+        "рыба",
+        "орангутан",
+        "папай",
+        "дверь",
+        "мандарин"
+    ];
+    //2. Выбираем случайное слово
+    var randomWord = words[Math.floor(Math.random() * words.length)];
+    //3. Создаем итоговой масив:
+    var answerArray = [];
+    for (var i = 0; i < randomWord.length; i++) {
+        answerArray[i] = "_";
+    }
+    //4. Програмируем игровой цикл:
+    var remainingLetters = randomWord.length;
+    while (remainingLetters > 0) {
+        // 1)Отображение состояния игры
+        alert(answerArray.join(" "));
+        //2) Запрашиваем вариант ответа
+        var guess = prompt("Угадайте букву или нажмите Отмена для выхода из игры");
+        attempts--;
+        if (guess === null) {
+            break; //break - можно использовать для немедленного выхода из цыкла
+        } else if (guess.length !== 1) {
+            alert("Пожалуйста, введите только одну букву.");
+        }
+        //3) Обновляем состояние игры           
+        else {
+            guess = guess.toLowerCase();
+            for (var j = 0; j < randomWord.length; j++) {
+                if (randomWord[j] === guess) {
+                    answerArray[j] = guess;
+                    remainingLetters--;
+                }
+            }
+        }
+        if (attempts == 0) {
+            break;
+
+        }
+
+        //Конец игрового цыкла
+    }
+    //Отображаем ответ и поздравлям игрока
+    if (attempts > 0) {
+        alert(answerArray.join(" "));
+        alert("Отлично было загадано слово - " + randomWord);
+    } else {
+        alert("Вы проиграли. Слово было загадано - " + randomWord);
+    }
+    </script>
+    </body>
+
+    </html>
