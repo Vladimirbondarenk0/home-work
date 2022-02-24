@@ -1,9 +1,29 @@
 const findTheNumThatLessThanArithmeticMeanNum = function (arr) {
-    let sum = 0;
-    for (let i = 0; i < arr.length; i++) {
-        sum += arr[i];
+    try {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+    } catch (err) {
+        let res = findTheNumThatLessThanArithmeticMeanNum([1, 3]);
+        let arr = [1];
+        return JSON.stringify(res) === JSON.stringify(arr);
+
+        if (Array.isArray(res) === false) {
+            return "input parameter is not an array";
+        }
+        for (let i = 0; i < res.length; i++) {
+            if (typeof (res[i]) != "number") {
+                return "item with index={" + res[i] + "}is not a number";
+            }
+        }
+
     }
-    let mean = sum / arr.length;
+    try {
+        let mean = sum / arr.length;
+    } catch (err) {
+
+    }
     let result = [];
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] < mean) {
@@ -14,22 +34,25 @@ const findTheNumThatLessThanArithmeticMeanNum = function (arr) {
 };
 
 function testFindTheNumThatLessThanArithmeticMeanNum() {
-    let res = findTheNumThatLessThanArithmeticMeanNum([1, 3]);
-    let arr = [1];
-    return JSON.stringify(res) === JSON.stringify(arr);
-
-    if (Array.isArray(res) === false) {
-        return "input parameter is not an array";
-    }                           
-
-    for (let i = 0; i < res.length; i++) {
-        if (typeof (res[i]) != "number") {
-            return "item with index={" + res[i] + "}is not a number";
-        }
-    }
-}
-testFindTheNumThatLessThanArithmeticMeanNum();
 
 
-// result = findTheNumThatLessThanArithmeticMeanNum(null);
-// result = findTheNumThatLessThanArithmeticMeanNum([null, 1]); 
+    
+    //     let res = findTheNumThatLessThanArithmeticMeanNum([1, 3]);
+    //     let arr = [1];
+    //     return JSON.stringify(res) === JSON.stringify(arr);
+
+    //     if (Array.isArray(res) === false) {
+    //         return "input parameter is not an array";
+    //     }
+
+    //     for (let i = 0; i < res.length; i++) {
+    //         if (typeof (res[i]) != "number") {
+    //             return "item with index={" + res[i] + "}is not a number";
+    //         }
+// }
+     }
+    testFindTheNumThatLessThanArithmeticMeanNum();
+
+
+    // result = findTheNumThatLessThanArithmeticMeanNum(null);
+    // result = findTheNumThatLessThanArithmeticMeanNum([null, 1]); 
