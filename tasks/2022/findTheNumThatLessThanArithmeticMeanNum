@@ -1,6 +1,11 @@
 const findTheNumThatLessThanArithmeticMeanNum = function (arr) {
-    if (Array.isArray(arr) === false) {
+    if (!Array.isArray(arr)) {
         throw "input parameter is not an array";
+    }
+    for (let i = 0; i < arr.length; i++) {
+            if (typeof(arr[i]) != "number") {
+                throw "item with index={" + arr[i] + "}is not a number";
+            }
     }
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
