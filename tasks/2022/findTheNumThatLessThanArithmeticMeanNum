@@ -20,14 +20,19 @@ const findTheNumThatLessThanArithmeticMeanNum = function (arr) {
     }
     return result;
 };
-
-
 function testFindTheNumThatLessThanArithmeticMeanNum() {
-
-
-
-    //     let res = findTheNumThatLessThanArithmeticMeanNum([1, 3]);
-    //     let arr = [1];
+    
+ try {
+    findTheNumThatLessThanArithmeticMeanNum();
+ }
+ catch(error) {
+    let res = findTheNumThatLessThanArithmeticMeanNum([3, 3, 1]);
+        if (res === "input parameter is not an array") {
+            return true;
+        } 
+ }
+}
+      
     //     return JSON.stringify(res) === JSON.stringify(arr);
 
     //     if (Array.isArray(res) === false) {
@@ -39,8 +44,8 @@ function testFindTheNumThatLessThanArithmeticMeanNum() {
     //             return "item with index={" + res[i] + "}is not a number";
     //         }
     // }
-}
-testFindTheNumThatLessThanArithmeticMeanNum();
+
+// testFindTheNumThatLessThanArithmeticMeanNum();
 
 
 // result = findTheNumThatLessThanArithmeticMeanNum(null);
