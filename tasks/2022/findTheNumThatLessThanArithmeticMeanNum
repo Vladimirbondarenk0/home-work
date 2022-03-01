@@ -3,9 +3,10 @@ const findTheNumThatLessThanArithmeticMeanNum = function (arr) {
         throw "input parameter is not an array";
     }
     for (let i = 0; i < arr.length; i++) {
-            if (typeof(arr[i]) != "number") {
-                throw "item with index={" + arr[i] + "}is not a number";
-            }
+        if (typeof (arr[i]) != "number") {
+            var err = "item with index={" + arr[i] + "}is not a number";
+            throw err;
+        }
     }
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -20,30 +21,33 @@ const findTheNumThatLessThanArithmeticMeanNum = function (arr) {
     }
     return result;
 };
+
 function testFindTheNumThatLessThanArithmeticMeanNum() {
-    
- try {
-    findTheNumThatLessThanArithmeticMeanNum();
- }
- catch(error) {
-    let res = findTheNumThatLessThanArithmeticMeanNum([3, 3, 1]);
-        if (res === "input parameter is not an array") {
-            return true;
-        } 
- }
-}
-      
-    //     return JSON.stringify(res) === JSON.stringify(arr);
 
-    //     if (Array.isArray(res) === false) {
-    //         return "input parameter is not an array";
-    //     }
+    try {
+        findTheNumThatLessThanArithmeticMeanNum([3, 3, null]);
+    } 
+    catch (error) {
+        if (error === "input parameter is not an array") {
+            return "input parameter is not an array";
+        }
+        if (error === err)  {
+            return err;
+        }
+        }
+    }
 
-    //     for (let i = 0; i < res.length; i++) {
-    //         if (typeof (res[i]) != "number") {
-    //             return "item with index={" + res[i] + "}is not a number";
-    //         }
-    // }
+//     return JSON.stringify(res) === JSON.stringify(arr);
+
+//     if (Array.isArray(res) === false) {
+//         return "input parameter is not an array";
+//     }
+
+//     for (let i = 0; i < res.length; i++) {
+//         if (typeof (res[i]) != "number") {
+//             return "item with index={" + res[i] + "}is not a number";
+//         }
+// }
 
 // testFindTheNumThatLessThanArithmeticMeanNum();
 
